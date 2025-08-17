@@ -31,7 +31,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTicket(TicketRequest ticketRequest)
+        public async Task<IActionResult> CreateTicket(TicketPostRequest ticketRequest)
         {
             // Validade request body
             if (ticketRequest is null)
@@ -57,7 +57,7 @@ namespace Backend.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateTicket(int id, TicketRequest ticketRequest)
+        public async Task<IActionResult> UpdateTicket(int id, TicketPutRequest ticketRequest)
         {
             // Validade request body
             if (ticketRequest is null)
@@ -71,6 +71,8 @@ namespace Backend.Controllers
             ticket.Title = ticketRequest.Title;
             ticket.Description = ticketRequest.Description;
             ticket.RequesterId = ticketRequest.RequesterId;
+            ticket.TechnicianId = ticketRequest.TechnicianId;
+            ticket.CompletedAt = ticketRequest.CompletedAt;
 
             await _context.SaveChangesAsync();
            

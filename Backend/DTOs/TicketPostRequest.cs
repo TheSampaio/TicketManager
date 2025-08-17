@@ -2,7 +2,7 @@
 
 namespace Backend.DTOs
 {
-    public class TicketRequest
+    public class TicketPostRequest
     {
         [Required, MaxLength(100)]
         public string Title { get; set; } = string.Empty;
