@@ -14,6 +14,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllTickets()
         {
+            // Returns all tickets from the database
             var tickets = await _context.Tickets.ToListAsync();
             return Ok(tickets);
         }
@@ -21,6 +22,7 @@ namespace Backend.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetTicketById(int id)
         {
+            // Returns a ticket by its Id, or 404 if not found
             var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket is null)
@@ -40,12 +42,12 @@ namespace Backend.Controllers
                 CreatedAt = DateTime.UtcNow
             };
 
-            // Update the database using the ticketModel
+            // Adds a new ticket to the database
             await _context.Tickets.AddAsync(ticketModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(
-                nameof(GetTicketById),          // The action name
+                nameof(GetTicketById),          // Action name for location header
                 new { id = ticketModel.Id },    // Route values
                 ticketModel                     // Response body
             );
@@ -54,11 +56,13 @@ namespace Backend.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateTicket(int id, TicketPutRequest ticketRequest)
         {
+            // Finds the ticket by Id, or returns 404 if not found
             var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket is null)
                 return NotFound("Ticket not found.");
 
+            // Updates the ticket's properties
             ticket.Title = ticketRequest.Title;
             ticket.Description = ticketRequest.Description;
             ticket.RequesterId = ticketRequest.RequesterId;
@@ -73,11 +77,13 @@ namespace Backend.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteTicketById(int id)
         {
+            // Finds the ticket by Id, or returns 404 if not found
             var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket is null)
                 return NotFound("Ticket not found.");
 
+            // Deletes the ticket from the database
             _context.Tickets.Remove(ticket);
             await _context.SaveChangesAsync();
 
