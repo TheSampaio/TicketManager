@@ -7,10 +7,10 @@ namespace Backend.DTOs
         [Required, MaxLength(100)]
         public string Title { get; set; } = string.Empty;
 
-        [MaxLength(1000)]
-        public string? Description { get; set; }
+        [Required, MaxLength(1000)]
+        public string Description { get; set; } = string.Empty;
 
-        [Required, MaxLength(50)]
-        public string RequesterId { get; set; } = string.Empty;
+        [Required]
+        public int RequesterId { get; set; }
     }
 }
