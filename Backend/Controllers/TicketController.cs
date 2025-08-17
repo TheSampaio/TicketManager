@@ -2,8 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]s")]
+    [Route("api/[controller]s"), ApiController]
     public class TicketController : ControllerBase
     {
         [HttpGet]
