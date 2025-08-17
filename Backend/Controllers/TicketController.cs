@@ -62,7 +62,16 @@ namespace Backend.Controllers
             if (ticketRequest is null)
                 return BadRequest("Request body is required.");
 
-            // TODO: PUT method logic...
+            var ticket = await _context.Tickets.FindAsync(id);
+
+            if (ticket is null)
+                return NotFound("Ticket not found.");
+
+            ticket.Title = ticketRequest.Title;
+            ticket.Description = ticketRequest.Description;
+            ticket.RequesterId = ticketRequest.RequesterId;
+
+            await _context.SaveChangesAsync();
            
             return NoContent();
         }
