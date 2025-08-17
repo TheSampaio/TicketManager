@@ -12,14 +12,14 @@ namespace Backend.Controllers
         private readonly AppDbContext _context = context;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllTickets()
         {
             var tickets = await _context.Tickets.ToListAsync();
             return Ok(tickets);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetTicketById(int id)
         {
             var ticket = await _context.Tickets.FindAsync(id);
 
@@ -30,7 +30,7 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostContent(TicketRequest ticketRequest)
+        public async Task<IActionResult> CreateTicket(TicketRequest ticketRequest)
         {
             // Validade request body
             if (ticketRequest is null)
@@ -49,7 +49,7 @@ namespace Backend.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(
-                nameof(GetById),                // The action name
+                nameof(GetTicketById),          // The action name
                 new { id = ticketModel.Id },    // Route values
                 ticketModel                     // Response body
             );
@@ -67,8 +67,8 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:Guid}")]
-        public IActionResult DeleteById(Guid id)
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteTicketById(int id)
         {
             // TODO: DELETE method logic...
             return NoContent();
