@@ -11,8 +11,8 @@ namespace Backend.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            // TODO: GET method logic...
-            return Ok();
+            var tickets = _context.Tickets.ToList();
+            return Ok(tickets);
         }
 
         [HttpGet("{id:Guid}")]
