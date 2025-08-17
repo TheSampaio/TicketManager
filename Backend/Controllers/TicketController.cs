@@ -1,10 +1,13 @@
+using Backend.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
     [Route("api/[controller]s"), ApiController]
-    public class TicketController : ControllerBase
+    public class TicketController(AppDbContext context) : ControllerBase
     {
+        private readonly AppDbContext _context = context;
+
         [HttpGet]
         public IActionResult GetAll()
         {
