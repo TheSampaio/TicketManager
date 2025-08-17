@@ -3,6 +3,7 @@ using Backend.DTOs;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Sockets;
 
 namespace Backend.Controllers
 {
@@ -77,9 +78,16 @@ namespace Backend.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteTicketById(int id)
+        public async Task<IActionResult> DeleteTicketById(int id)
         {
-            // TODO: DELETE method logic...
+            var ticket = await _context.Tickets.FindAsync(id);
+
+            if (ticket is null)
+                return NotFound("Ticket not found.");
+
+            _context.Tickets.Remove(ticket);
+            await _context.SaveChangesAsync();
+
             return NoContent();
         }
     }
