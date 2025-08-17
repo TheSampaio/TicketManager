@@ -55,10 +55,15 @@ namespace Backend.Controllers
             );
         }
 
-        [HttpPut("{id:Guid}")]
-        public IActionResult PutById(Guid id)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateTicket(int id, TicketRequest ticketRequest)
         {
+            // Validade request body
+            if (ticketRequest is null)
+                return BadRequest("Request body is required.");
+
             // TODO: PUT method logic...
+           
             return NoContent();
         }
 
