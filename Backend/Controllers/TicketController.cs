@@ -3,7 +3,6 @@ using Backend.DTOs;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Sockets;
 
 namespace Backend.Controllers
 {
@@ -33,10 +32,6 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTicket(TicketPostRequest ticketRequest)
         {
-            // Validade request body
-            if (ticketRequest is null)
-                return BadRequest("Request body is required.");
-
             var ticketModel = new TicketModel
             {
                 Title = ticketRequest.Title,
@@ -59,10 +54,6 @@ namespace Backend.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateTicket(int id, TicketPutRequest ticketRequest)
         {
-            // Validade request body
-            if (ticketRequest is null)
-                return BadRequest("Request body is required.");
-
             var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket is null)
