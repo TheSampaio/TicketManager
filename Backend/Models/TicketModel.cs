@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Models
 {
     [Table("tickets")]
-    public class Ticket
+    public class TicketModel
     {
         [Key]
         public int Id { get; set; }
