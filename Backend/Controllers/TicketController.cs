@@ -49,7 +49,16 @@ namespace Backend.Controllers
             return CreatedAtAction(
                 nameof(GetTicketById),          // Action name for location header
                 new { id = ticketModel.Id },    // Route values
-                ticketModel                     // Response body
+                
+                // Response body
+                new TicketPostResponse
+                {
+                    Id = ticketModel.Id,
+                    Title = ticketModel.Title,
+                    Description = ticketModel.Description,
+                    RequesterId = ticketModel.RequesterId,
+                    CreatedAt = ticketModel.CreatedAt,
+                }
             );
         }
 
