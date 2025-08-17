@@ -15,11 +15,15 @@ namespace Backend.Controllers
             return Ok(tickets);
         }
 
-        [HttpGet("{id:Guid}")]
-        public IActionResult GetById(Guid id)
+        [HttpGet("{id:int}")]
+        public IActionResult GetById(int id)
         {
-            // TODO: GET method logic...
-            return Ok();
+            var ticket = _context.Tickets.Find(id);
+
+            if (ticket is null)
+                return NotFound("Ticket not found.");
+
+            return Ok(ticket);
         }
 
         [HttpPost]
