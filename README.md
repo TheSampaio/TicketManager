@@ -13,6 +13,10 @@
     ⚠️ A <strong>Frontend</strong> is planned but not yet implemented.
   </p>
 
+  <h2>📸 Screenshots</h2>
+  <strong>• Backend (Scalar)</strong>
+  <img src=".github/images/thumbnail-backend.png" alt="Backend screenshot" />
+
   <h2>📚 Table of Contents</h2>
   <ul>
     <li><a href="#features">Features</a></li>
