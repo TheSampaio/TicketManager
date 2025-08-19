@@ -90,7 +90,7 @@
   <h3 id="backend-setup">🖥️ Backend Setup</h3>
   <ol>
     <li>Clone the repository:
-      <pre><code>git clone https://github.com/your-username/TicketManager.git
+      <pre><code>git clone https://github.com/TheSampaio/TicketManager.git
 cd TicketManager/Backend</code></pre>
     </li>
     <li>Update your connection string in <code>appsettings.json</code> under <code>DefaultConnection</code>.</li>
