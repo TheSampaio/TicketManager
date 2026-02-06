@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800">Visão Geral</h2>
+        <p class="text-gray-500">Bem-vindo ao sistema. Acompanhe os indicadores abaixo.</p>
+    </div>
+    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-sm transition-colors">
+        <i class="bi bi-plus-lg me-2"></i> Novo Chamado
+    </button>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center h-full">
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Total Chamados</h6>
+            <h3 class="text-2xl font-bold text-gray-800">--</h3>
+        </div>
+        <div class="p-3 bg-blue-50 text-blue-600 rounded-lg">
+            <i class="bi bi-ticket-detailed text-2xl"></i>
+        </div>
+    </div>
+
+    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center h-full">
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Em Aberto</h6>
+            <h3 class="text-2xl font-bold text-gray-800">--</h3>
+        </div>
+        <div class="p-3 bg-red-50 text-red-600 rounded-lg">
+            <i class="bi bi-exclamation-octagon text-2xl"></i>
+        </div>
+    </div>
+
+    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center h-full">
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Em Atendimento</h6>
+            <h3 class="text-2xl font-bold text-gray-800">--</h3>
+        </div>
+        <div class="p-3 bg-yellow-50 text-yellow-600 rounded-lg">
+            <i class="bi bi-tools text-2xl"></i>
+        </div>
+    </div>
+
+    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center h-full">
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Solucionados</h6>
+            <h3 class="text-2xl font-bold text-gray-800">--</h3>
+        </div>
+        <div class="p-3 bg-green-50 text-green-600 rounded-lg">
+            <i class="bi bi-check-circle text-2xl"></i>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100">
+            <h6 class="font-bold text-gray-800">Volume de Chamados</h6>
+        </div>
+        <div class="p-6">
+            <div class="bg-gray-50 rounded-lg flex items-center justify-center min-h-[300px] border border-dashed border-gray-300">
+                <p class="text-gray-400 flex items-center">
+                    <i class="bi bi-bar-chart-fill me-2"></i> Área reservada para Gráfico
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100">
+            <h6 class="font-bold text-gray-800">Categorias</h6>
+        </div>
+        <div class="p-6 flex items-center justify-center min-h-[300px]">
+            <p class="text-sm text-gray-400 text-center">Nenhuma categoria calculada.</p>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+        <h6 class="font-bold text-gray-800">Chamados Recentes</h6>
+        <a href="#" class="text-sm text-blue-600 hover:text-blue-800 font-medium hover:underline">Ver Todos</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 font-semibold w-[50px]">#ID</th>
+                    <th class="px-6 py-3 font-semibold">Assunto</th>
+                    <th class="px-6 py-3 font-semibold">Requerente</th>
+                    <th class="px-6 py-3 font-semibold">Status</th>
+                    <th class="px-6 py-3 font-semibold">Prioridade</th>
+                    <th class="px-6 py-3 font-semibold">Data</th>
+                    <th class="px-6 py-3 font-semibold text-right">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td colspan="7" class="px-6 py-10 text-center">
+                        <div class="flex flex-col items-center">
+                            <i class="bi bi-inbox text-4xl text-gray-300 mb-2"></i>
+                            <span class="text-gray-500">Nenhum chamado encontrado.</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

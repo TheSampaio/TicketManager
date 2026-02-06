@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Inventário de Ativos";
+}
+
+<div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800">Ativos</h2>
+        <p class="text-gray-500">Gestão de Hardware, Software e Licenças.</p>
+    </div>
+    <div class="flex gap-3">
+        <button class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 flex items-center transition-colors">
+            <i class="bi bi-cloud-upload me-2"></i> Importar
+        </button>
+        <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center transition-colors shadow-sm">
+            <i class="bi bi-pc-display me-2"></i> Novo Ativo
+        </a>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center">
+        <div class="p-3 rounded-lg bg-blue-50 text-blue-600 me-4">
+            <i class="bi bi-box-seam text-2xl"></i>
+        </div>
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Ativos</h6>
+            <h4 class="text-2xl font-bold text-gray-800">--</h4>
+        </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center">
+        <div class="p-3 rounded-lg bg-green-50 text-green-600 me-4">
+            <i class="bi bi-person-check text-2xl"></i>
+        </div>
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Em Uso</h6>
+            <h4 class="text-2xl font-bold text-gray-800">--</h4>
+        </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center">
+        <div class="p-3 rounded-lg bg-yellow-50 text-yellow-600 me-4">
+            <i class="bi bi-layers text-2xl"></i>
+        </div>
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Em Estoque</h6>
+            <h4 class="text-2xl font-bold text-gray-800">--</h4>
+        </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center">
+        <div class="p-3 rounded-lg bg-red-50 text-red-600 me-4">
+            <i class="bi bi-tools text-2xl"></i>
+        </div>
+        <div>
+            <h6 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Manutenção/Descarte</h6>
+            <h4 class="text-2xl font-bold text-gray-800">--</h4>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
+    <div class="p-4">
+        <form class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+            <div class="md:col-span-4">
+                <label class="block text-xs font-bold text-gray-500 mb-1">Pesquisar</label>
+                <input type="text" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" placeholder="Tag, Serial ou Nome...">
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-500 mb-1">Tipo</label>
+                <select class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option selected>Todos</option>
+                    <option value="desktop">Computador</option>
+                    <option value="monitor">Monitor</option>
+                    <option value="printer">Impressora</option>
+                    <option value="mobile">Celular/Tablet</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-500 mb-1">Status</label>
+                <select class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option selected>Todos</option>
+                    <option value="1">Em Uso</option>
+                    <option value="2">Estoque</option>
+                    <option value="3">Manutenção</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-gray-500 mb-1">Localização</label>
+                <select class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5">
+                    <option selected>Todas</option>
+                    <option value="matriz">Matriz</option>
+                    <option value="filial1">Filial 1</option>
+                </select>
+            </div>
+
+            <div class="md:col-span-2">
+                <button type="submit" class="w-full text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors">Filtrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                <tr>
+                    <th scope="col" class="px-6 py-3 font-semibold">Nome / Tag</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Tipo</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Número de Série</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Local / Usuário</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Status</th>
+                    <th scope="col" class="px-6 py-3 font-semibold">Compra</th>
+                    <th scope="col" class="px-6 py-3 font-semibold text-right">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td colspan="7" class="px-6 py-10 text-center">
+                        <div class="flex flex-col items-center justify-center opacity-50">
+                            <i class="bi bi-box-seam text-4xl mb-3 text-gray-400"></i>
+                            <h6 class="font-bold text-gray-700">Nenhum ativo encontrado</h6>
+                            <p class="text-xs text-gray-500 mt-1">Verifique os filtros ou cadastre um novo item.</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="px-6 py-4 bg-white border-t border-gray-200 flex items-center justify-between">
+        <span class="text-sm text-gray-500">Mostrando <strong>0</strong> de <strong>0</strong> ativos</span>
+        <nav aria-label="Page navigation">
+            <ul class="inline-flex -space-x-px text-sm">
+                <li>
+                    <a href="#" class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-400 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 hover:text-white">1</a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-400 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 cursor-not-allowed">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

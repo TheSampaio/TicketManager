@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Meus Chamados";
+}
+
+<div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800">Chamados</h2>
+        <p class="text-gray-500">Gerencie e acompanhe as solicitações de suporte.</p>
+    </div>
+    <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-sm transition-colors">
+        <i class="bi bi-plus-lg me-2"></i> Abrir Novo Chamado
+    </a>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6 p-4">
+    <form class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+        <div class="md:col-span-4">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Pesquisar</label>
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="w-full pl-10 bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="ID, Assunto ou Requerente...">
+            </div>
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Status</label>
+            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                <option selected>Todos</option>
+                <option value="1">Novos</option>
+                <option value="2">Em Atendimento</option>
+                <option value="3">Pendentes</option>
+                <option value="4">Solucionados</option>
+            </select>
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Prioridade</label>
+            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                <option selected>Todas</option>
+                <option value="3">Alta</option>
+                <option value="2">Média</option>
+                <option value="1">Baixa</option>
+            </select>
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Categoria</label>
+            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                <option selected>Todas</option>
+                <option value="hw">Hardware</option>
+                <option value="sw">Software</option>
+                <option value="net">Redes</option>
+            </select>
+        </div>
+
+        <div class="md:col-span-2 flex gap-2">
+            <button type="submit" class="w-full text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 font-medium rounded-lg text-sm px-4 py-2.5 text-center transition-colors">Filtrar</button>
+            <button type="button" class="text-gray-500 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-lg px-4 py-2.5 transition-colors" title="Limpar Filtros"><i class="bi bi-x-lg"></i></button>
+        </div>
+    </form>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                <tr>
+                    <th class="px-6 py-3 font-semibold w-[80px]">ID</th>
+                    <th class="px-6 py-3 font-semibold">Assunto / Categoria</th>
+                    <th class="px-6 py-3 font-semibold">Requerente</th>
+                    <th class="px-6 py-3 font-semibold">Técnico</th>
+                    <th class="px-6 py-3 font-semibold">Status</th>
+                    <th class="px-6 py-3 font-semibold">Prioridade</th>
+                    <th class="px-6 py-3 font-semibold">Atualizado em</th>
+                    <th class="px-6 py-3 font-semibold text-right w-[100px]">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td colspan="8" class="px-6 py-10 text-center">
+                        <div class="flex flex-col items-center justify-center opacity-50">
+                            <i class="bi bi-inbox text-4xl mb-3 text-gray-400"></i>
+                            <h6 class="font-bold text-gray-700">Nenhum chamado encontrado</h6>
+                            <p class="text-xs text-gray-500 mt-1">Tente ajustar os filtros ou crie um novo chamado.</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="px-6 py-4 bg-white border-t border-gray-200 flex items-center justify-between">
+        <span class="text-sm text-gray-500">Mostrando <strong>0</strong> de <strong>0</strong> registros</span>
+        <nav aria-label="Navegação">
+            <ul class="inline-flex -space-x-px text-sm">
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-gray-400 bg-white border border-gray-300 rounded-l-lg cursor-not-allowed"><i class="bi bi-chevron-left"></i></a></li>
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-white bg-blue-600 border border-blue-600 hover:bg-blue-700">1</a></li>
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a></li>
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700"><i class="bi bi-chevron-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

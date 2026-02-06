@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Gestão de Usuários";
+}
+
+<div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h2 class="text-2xl font-bold text-gray-800">Usuários</h2>
+        <p class="text-gray-500">Administre o acesso e as permissões do sistema.</p>
+    </div>
+    <a href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-sm transition-colors">
+        <i class="bi bi-person-plus me-2"></i> Novo Usuário
+    </a>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6 p-4">
+    <form class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+        <div class="md:col-span-5">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Pesquisar</label>
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="w-full pl-10 bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="Nome, E-mail ou Login...">
+            </div>
+        </div>
+
+        <div class="md:col-span-3">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Perfil</label>
+            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                <option selected>Todos</option>
+                <option value="admin">Administrador</option>
+                <option value="tech">Técnico</option>
+                <option value="user">Requerente</option>
+            </select>
+        </div>
+
+        <div class="md:col-span-2">
+            <label class="block text-xs font-bold text-gray-500 mb-1">Status</label>
+            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                <option selected>Todos</option>
+                <option value="active">Ativos</option>
+                <option value="inactive">Inativos</option>
+            </select>
+        </div>
+
+        <div class="md:col-span-2">
+            <button type="submit" class="w-full text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors">Filtrar</button>
+        </div>
+    </form>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b border-gray-200">
+                <tr>
+                    <th class="px-6 py-3 font-semibold">Nome / E-mail</th>
+                    <th class="px-6 py-3 font-semibold">Departamento</th>
+                    <th class="px-6 py-3 font-semibold">Perfil</th>
+                    <th class="px-6 py-3 font-semibold">Status</th>
+                    <th class="px-6 py-3 font-semibold">Último Acesso</th>
+                    <th class="px-6 py-3 font-semibold text-right">Ações</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <tr>
+                    <td colspan="6" class="px-6 py-10 text-center">
+                        <div class="flex flex-col items-center justify-center opacity-50">
+                            <i class="bi bi-people text-4xl mb-3 text-gray-400"></i>
+                            <h6 class="font-bold text-gray-700">Nenhum usuário encontrado</h6>
+                            <p class="text-xs text-gray-500 mt-1">Tente buscar por outro nome ou adicione um novo usuário.</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="px-6 py-4 bg-white border-t border-gray-200 flex items-center justify-between">
+        <span class="text-sm text-gray-500">Mostrando <strong>0</strong> de <strong>0</strong> usuários</span>
+        <nav aria-label="Page navigation">
+            <ul class="inline-flex -space-x-px text-sm">
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-gray-400 bg-white border border-gray-300 rounded-l-lg cursor-not-allowed"><i class="bi bi-chevron-left"></i></a></li>
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-white bg-blue-600 border border-blue-600 hover:bg-blue-700">1</a></li>
+                <li><a href="#" class="px-3 h-8 flex items-center justify-center text-gray-400 bg-white border border-gray-300 rounded-r-lg cursor-not-allowed"><i class="bi bi-chevron-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

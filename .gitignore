@@ -1,0 +1,10 @@
+# Directories
+.vs/
+.vscode/
+
+bin/
+obj/
+node_modules/
+
+# Files
+*.user

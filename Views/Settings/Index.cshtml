@@ -1,0 +1,232 @@
+﻿@{
+    ViewData["Title"] = "Configurações do Sistema";
+}
+
+<div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-800">Configurações</h2>
+    <p class="text-gray-500">Gerencie as preferências globais do ServiceDesk.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="md:col-span-1">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <nav class="flex flex-col space-y-1 p-2" id="settings-tabs">
+                <button onclick="openTab(event, 'tab-general')" class="tab-btn active-tab w-full text-left px-4 py-3 rounded-lg flex items-center font-medium transition-colors bg-blue-50 text-blue-700">
+                    <i class="bi bi-sliders me-3 text-lg"></i> Geral
+                </button>
+
+                <button onclick="openTab(event, 'tab-email')" class="tab-btn w-full text-left px-4 py-3 rounded-lg flex items-center font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                    <i class="bi bi-envelope-at me-3 text-lg"></i> E-mail
+                </button>
+
+                <button onclick="openTab(event, 'tab-tickets')" class="tab-btn w-full text-left px-4 py-3 rounded-lg flex items-center font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                    <i class="bi bi-ticket-perforated me-3 text-lg"></i> Regras
+                </button>
+
+                <button onclick="openTab(event, 'tab-security')" class="tab-btn w-full text-left px-4 py-3 rounded-lg flex items-center font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                    <i class="bi bi-shield-lock me-3 text-lg"></i> Segurança
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="md:col-span-3">
+
+        <div id="tab-general" class="tab-content block">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h5 class="font-bold text-gray-800">Configurações Gerais</h5>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Nome da Aplicação</label>
+                                <input type="text" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" value="TicketSystem">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">URL Base</label>
+                                <input type="text" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="https://suporte.suaempresa.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Mensagem de Boas-vindas</label>
+                            <textarea class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" rows="2">Bem-vindo ao sistema de suporte interno.</textarea>
+                        </div>
+                        <div class="md:w-1/2">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Fuso Horário Padrão</label>
+                            <select class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                                <option value="-3">(GMT-03:00) Brasília</option>
+                                <option value="0">(GMT+00:00) UTC</option>
+                            </select>
+                        </div>
+                        <div class="pt-4 text-right">
+                            <button type="button" class="bg-blue-600 text-white hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-email" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h5 class="font-bold text-gray-800">Servidor de E-mail (SMTP)</h5>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Servidor SMTP</label>
+                                <input type="text" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="smtp.office365.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Porta</label>
+                                <input type="number" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="587">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Usuário / E-mail</label>
+                                <input type="email" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="nao-responda@empresa.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                                <input type="password" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="sslCheck" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" checked>
+                            <label for="sslCheck" class="ml-2 text-sm font-medium text-gray-900">Habilitar SSL/TLS</label>
+                        </div>
+                        <div class="pt-4 flex justify-between">
+                            <button type="button" class="text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">Testar Conexão</button>
+                            <button type="button" class="bg-blue-600 text-white hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-tickets" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h5 class="font-bold text-gray-800">Automação de Chamados</h5>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-6">
+                        <div class="border-b border-gray-100 pb-6">
+                            <h6 class="font-bold text-xs text-gray-400 uppercase mb-4">SLAs Padrão (Horas)</h6>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Baixa Prioridade</label>
+                                    <div class="flex">
+                                        <input type="number" class="rounded-none rounded-l-lg bg-white border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" value="48">
+                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg">Horas</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Média Prioridade</label>
+                                    <div class="flex">
+                                        <input type="number" class="rounded-none rounded-l-lg bg-white border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" value="24">
+                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg">Horas</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Alta Prioridade</label>
+                                    <div class="flex">
+                                        <input type="number" class="rounded-none rounded-l-lg bg-white border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" value="4">
+                                        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg">Horas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h6 class="font-bold text-xs text-gray-400 uppercase mb-3">Fechamento Automático</h6>
+                            <div class="flex items-center mb-4">
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" value="" class="sr-only peer" checked>
+                                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                    <span class="ml-3 text-sm font-medium text-gray-900">Fechar tickets resolvidos automaticamente após inatividade</span>
+                                </label>
+                            </div>
+                            <div class="w-48">
+                                <label class="block text-xs font-medium text-gray-700 mb-1">Dias para fechar:</label>
+                                <input type="number" class="w-full bg-white border border-gray-300 rounded-lg text-sm focus:ring-blue-500 focus:border-blue-500 p-2" value="5">
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button type="button" class="bg-blue-600 text-white hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-security" class="tab-content hidden">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+                <div class="px-6 py-4 border-b border-gray-100">
+                    <h5 class="font-bold text-gray-800">Segurança e Acesso</h5>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-2">Política de Senhas</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input id="passComplex" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" checked>
+                                    <label for="passComplex" class="ml-2 text-sm font-medium text-gray-900">Exigir caracteres especiais e números</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="passChange" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                    <label for="passChange" class="ml-2 text-sm font-medium text-gray-900">Exigir troca de senha a cada 90 dias</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-gray-700 mb-2">Restrições</label>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                                <span class="ml-3 text-sm font-bold text-red-600">Modo de Manutenção (Apenas Admins acessam)</span>
+                            </label>
+                        </div>
+
+                        <div class="text-right">
+                            <button type="button" class="bg-blue-600 text-white hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        // Esconder todos os conteúdos
+        var contents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].classList.add("hidden");
+            contents[i].classList.remove("block");
+        }
+
+        // Remover classe ativa dos botões
+        var tabLinks = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("bg-blue-50", "text-blue-700");
+            tabLinks[i].classList.add("text-gray-600", "hover:bg-gray-50");
+        }
+
+        // Mostrar tab atual
+        document.getElementById(tabName).classList.remove("hidden");
+        document.getElementById(tabName).classList.add("block");
+
+        // Adicionar classe ativa ao botão clicado
+        evt.currentTarget.classList.remove("text-gray-600", "hover:bg-gray-50");
+        evt.currentTarget.classList.add("bg-blue-50", "text-blue-700");
+    }
+</script>
